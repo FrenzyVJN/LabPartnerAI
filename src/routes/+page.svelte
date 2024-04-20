@@ -29,7 +29,7 @@
 
 	Conclusion:
 	Give 1 conclusion generalizing all questions
-	And dont give it in the form of html tags. Just write it as a text.`
+	`
 	async function onSubmit(event) {
 		event.preventDefault();
 		loading = true;
@@ -78,7 +78,7 @@
 
 				let data = await response.json();
 				data = data.candidates[0].content.parts[0].text;
-				data = marked.parse(data);
+				// data = marked.parse(data);
 				console.log(data);
 				if (response.status !== 200) {
 					throw data.error || new Error(`Request failed with status ${response.status}`);
