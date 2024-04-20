@@ -28,7 +28,8 @@
 	and so on
 
 	Conclusion:
-	Give 1 conclusion generalizing all questions `
+	Give 1 conclusion generalizing all questions
+	And dont give it in the form of html tags. Just write it as a text.`
 	async function onSubmit(event) {
 		event.preventDefault();
 		loading = true;
@@ -136,9 +137,7 @@
 					</select>
 				</div>
 				<div>
-					<p>
 						{data}
-					</p>
 				</div>
 				<footer class="card-footer text-center">
 					<button class="btn btn-lg variant-filled-primary mb-4" type="submit" aria-busy={loading}>
