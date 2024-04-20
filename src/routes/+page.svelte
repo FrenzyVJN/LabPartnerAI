@@ -51,7 +51,7 @@
 
 				data = await response.json();
 				data = data.candidates[0].content.parts[0].text;
-				data = marked.parse(data);
+				// data = marked.parse(data);
 				console.log(data);
 				if (response.status !== 200) {
 					throw data.error || new Error(`Request failed with status ${response.status}`);
