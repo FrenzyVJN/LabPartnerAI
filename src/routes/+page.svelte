@@ -27,22 +27,36 @@
 	b)
 	and so on
 
+	Sample output:
+	generate sample output for each question. just like in the terminal
+	a) output of question 1
+	b) output of question 2
+	and so on...
+
 	Conclusion:
 	Give 1 conclusion generalizing all questions
+	don't comment out the code...comment the other parts of the code
 	`
 	let sysPrompt1 = `Aim : 
 	a) aim of question 1
 	b) aim of question 2
-	and so on
+	and so on...
 
 	Program:
 	generate c++ program for each question.
 	a)
 	b)
-	and so on
+	and so on...
+
+	Sample output:
+	generate sample output for each question. just like in the terminal
+	a) output of question 1
+	b) output of question 2
+	and so on...
 
 	Conclusion:
 	Give 1 conclusion generalizing all questions
+	don't comment out the code...comment the other parts of the code
 	`
 	async function onSubmit(event) {
 		event.preventDefault();
