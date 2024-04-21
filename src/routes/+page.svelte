@@ -66,7 +66,6 @@
 			if (option = 'python-lab'){
 				console.log('python lab')
 			try {
-				//const apiKey = 'AIzaSyDu4RlVwMdvXzhpkrUX1r8oQ4TxWCBKKtI';
 				const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
 					method: 'POST',
      			headers: { 'Content-Type': 'application/json' },
