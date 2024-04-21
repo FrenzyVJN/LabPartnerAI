@@ -186,10 +186,10 @@
 						/>
 					</label>
 					<select bind:value={option} name="option" id="option" class="bg-inherit rounded-lg border shadow-md shadow-white">
-						<option class="bg-inherit text-white" value="" selected disabled>Select Option</option>
-						<option class="bg-inherit text-white" value="python-lab">Python Lab</option>
-						<option class="bg-inherit text-white" value="DS-lab">DS Lab</option>
-						<option class="bg-inherit text-white" value="general">General</option>
+						<option class="text-black" value="" selected disabled>Select Option</option>
+						<option class="text-black" value="python-lab">Python Lab</option>
+						<option class="text-black" value="DS-lab">DS Lab</option>
+						<option class="text-black" value="general">General</option>
 					</select>
 				</div>
 				<div>
