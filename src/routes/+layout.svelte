@@ -11,7 +11,9 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl ">LabPartnerAI!</strong>
+				<a href="/">
+					<strong class="text-xl ">LabPartnerAI!</strong>
+				</a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<button
