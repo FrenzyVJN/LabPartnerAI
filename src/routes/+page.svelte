@@ -3,7 +3,6 @@
 	import { RangeSlider } from '@skeletonlabs/skeleton';
 	import { tooltip } from '@skeletonlabs/skeleton';
 	import { error } from '@sveltejs/kit';
-	import { marked } from 'marked';
   	let promptInput: any;
 	let temperatureInput = 0.6;
 	let result = '';
