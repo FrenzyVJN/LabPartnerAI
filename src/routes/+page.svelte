@@ -4,7 +4,7 @@
 	import { tooltip } from '@skeletonlabs/skeleton';
 	import { error } from '@sveltejs/kit';
 	import { marked } from 'marked';
-	let promptInput: any;
+  	let promptInput: any;
 	let temperatureInput = 0.6;
 	let result = '';
 	let loading = false;
@@ -137,7 +137,7 @@
 					</select>
 				</div>
 				<div>
-						{data}
+						<pre><code class="language-python">{data}</code></pre>
 				</div>
 				<footer class="card-footer text-center">
 					<button class="btn btn-lg variant-filled-primary mb-4" type="submit" aria-busy={loading}>
