@@ -14,6 +14,16 @@
 				<strong class="text-xl ">LabPartnerAI!</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
+				<button
+					class="btn btn-sm variant-ghost-surface"
+					on:click={() => {
+						window.location.href = '/updates';
+					}}
+
+				>
+					Updates
+				</button>
+
 				<a
 					class="btn btn-sm variant-ghost-surface"
 					href="https://frenzyvjn.tech"
