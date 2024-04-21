@@ -11,7 +11,7 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Frenzy!</strong>
+				<strong class="text-xl ">LabPartnerAI!</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
@@ -25,11 +25,11 @@
 
 				<a
 					class="btn btn-sm variant-ghost-surface"
-					href="https://github.com/FrenzyVJN"
+					href="https://github.com/Surya-nara0123"
 					target="_blank"
 					rel="noreferrer"
 				>
-					frenzyvjn@github
+					Surya
 				</a>
 				<LightSwitch />
 			</svelte:fragment>

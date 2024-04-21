@@ -188,7 +188,7 @@
 						/>
 					</label>
 					<select bind:value={option} name="option" id="option" class="bg-inherit rounded-lg border shadow-md shadow-white">
-						<option value="general" disabled default>Select Option</option>
+						<option value="" selected disabled>Select Option</option>
 						<option value="python-lab">Python Lab</option>
 						<option value="DS-lab">DS Lab</option>
 						<option value="general">General</option>
