@@ -30,6 +30,20 @@
 	Conclusion:
 	Give 1 conclusion generalizing all questions
 	`
+	let sysPrompt1 = `Aim : 
+	a) aim of question 1
+	b) aim of question 2
+	and so on
+
+	Program:
+	generate c++ program for each question.
+	a)
+	b)
+	and so on
+
+	Conclusion:
+	Give 1 conclusion generalizing all questions
+	`
 	async function onSubmit(event) {
 		event.preventDefault();
 		loading = true;
@@ -63,7 +77,7 @@
 				// Consider implementing your own error handling logic here
 				console.error(error);
 			}}
-			else{
+			else if (option == 'general'){
 				console.log('general')
 				try {
 					const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
@@ -88,6 +102,35 @@
 				data = data.candidates[0].content.parts[0].text;
 				result = data.result;
 				return data;
+			} catch (error) {
+				// Consider implementing your own error handling logic here
+				console.error(error);
+			}
+			}
+			else {
+				console.log('DS lab')
+			try {
+				//const apiKey = 'AIzaSyDu4RlVwMdvXzhpkrUX1r8oQ4TxWCBKKtI';
+				const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+					method: 'POST',
+     			headers: { 'Content-Type': 'application/json' },
+      			body: JSON.stringify({
+      "contents": [{
+        "parts":[{
+          "text": sysPrompt1+ promptInput}]}]}),
+				});
+				console.log(response);
+
+				data = await response.json();
+				data = data.candidates[0].content.parts[0].text;
+				// data = marked.parse(data);
+				console.log(data);
+				if (response.status !== 200) {
+					throw data.error || new Error(`Request failed with status ${response.status}`);
+				} else {
+					loading = false;
+				}
+				result = data.result;
 			} catch (error) {
 				// Consider implementing your own error handling logic here
 				console.error(error);
@@ -133,11 +176,18 @@
 					<select bind:value={option} name="option" id="option" class="bg-inherit rounded-lg border shadow-md shadow-white">
 						<option value="general" disabled default>Select Option</option>
 						<option value="python-lab">Python Lab</option>
+						<option value="DS-lab">DS Lab</option>
 						<option value="general">General</option>
 					</select>
 				</div>
 				<div>
-						<pre><code class="language-python">{data}</code></pre>
+					{#if option == 'python-lab'}
+						<pre class="bg-blue" lang="python"><code>{data}</code></pre>
+					{:else if option == 'DS-lab'}
+						<pre class="bg-blue" lang="c++"><code>{data}</code></pre>
+					{:else}
+						<pre class="bg-blue"><code class="language-python">{data}</code></pre>
+					{/if}
 				</div>
 				<footer class="card-footer text-center">
 					<button class="btn btn-lg variant-filled-primary mb-4" type="submit" aria-busy={loading}>
