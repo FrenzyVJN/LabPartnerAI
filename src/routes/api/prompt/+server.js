@@ -11,7 +11,8 @@ const apiCall = (/** @type {any} */ data, option) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic clvccda0c00j11au3478b5wk4'
+        'Authorization': 'Basic clvccda0c00j11au3478b5wk4',
+        'mode': 'no-cors'
       },
       body: JSON.stringify(data1)
     });
@@ -20,7 +21,8 @@ const apiCall = (/** @type {any} */ data, option) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic clvccda0c00j11au3478b5wk4'
+        'Authorization': 'Basic clvccda0c00j11au3478b5wk4',
+        'mode': 'no-cors'
       },
       body: JSON.stringify(data1) }
     )
@@ -29,7 +31,8 @@ const apiCall = (/** @type {any} */ data, option) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic clvccda0c00j11au3478b5wk4'
+        'Authorization': 'Basic clvccda0c00j11au3478b5wk4',
+        'mode': 'no-cors'
       },
       body: JSON.stringify(data1) }
     )
