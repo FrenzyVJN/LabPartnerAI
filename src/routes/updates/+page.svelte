@@ -7,6 +7,9 @@
         The LabPartnerAI is finally out now! It can complete your python assignment, DSA assignment in just a few seconds.
         More features coming soon.... hopefully.
     </p>
+    <p class="md:px-20 px-3 mt-2">
+        The User based API handling is now removed. anyone can use it without needing an API key.
+    </p>
 
     <br />
     <p class="md:pl-20 pl-3">P.S.: Website run by two lazy assholes, we might get bored of this soon.</p>
