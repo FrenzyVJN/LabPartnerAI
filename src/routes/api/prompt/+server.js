@@ -1,5 +1,3 @@
-crossOriginIsolated = false;
-
 const apiCall = (/** @type {any} */ data, option) => {
   const data1 = {
     "input": {
