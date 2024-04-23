@@ -3,14 +3,13 @@
 	import { RangeSlider } from '@skeletonlabs/skeleton';
 	import { tooltip } from '@skeletonlabs/skeleton';
 	import { error } from '@sveltejs/kit';
-	import apiCall from './api/prompt/+server';
-	let promptInput: any;
+  	let promptInput: any;
 	let temperatureInput = 0.6;
 	let result = '';
 	let loading = false;
 	let apiKey = '';
 	let option = '';
-	let data;
+	let data = '';
 	let sysPrompt = `Aim : 
 	a) aim of question 1
 	b) aim of question 2
@@ -36,7 +35,7 @@
 	Conclusion:
 	Give 1 conclusion generalizing all questions
 	don't comment out the code...comment the other parts of the code
-	`;
+	`
 	let sysPrompt1 = `Aim : 
 	a) aim of question 1
 	b) aim of question 2
@@ -57,54 +56,97 @@
 	Conclusion:
 	Give 1 conclusion generalizing all questions
 	don't comment out the code...comment the other parts of the code
-	`;
+	`
 	async function onSubmit(event) {
 		event.preventDefault();
 		loading = true;
-		console.log(option);
+		console.log(option)
 		if (promptInput != '') {
-			if (option == 'python-lab') {
-				console.log('python lab');
-				try {
-					// use the apiCall function to make a request to the server
-					const response = await apiCall(promptInput, option);
-					console.log(response);
+			if (option = 'python-lab'){
+				console.log('python lab')
+			try {
+				const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+					method: 'POST',
+     			headers: { 'Content-Type': 'application/json' },
+      			body: JSON.stringify({
+      "contents": [{
+        "parts":[{
+          "text": sysPrompt+ promptInput}]}]}),
+				});
+				console.log(response);
 
-					data = await response.json();
-					data = data.output;
-					console.log(data);
-				} catch (error) {
-					// Consider implementing your own error handling logic here
-					console.error(error);
+				data = await response.json();
+				data = data.candidates[0].content.parts[0].text;
+				// data = marked.parse(data);
+				console.log(data);
+				if (response.status !== 200) {
+					throw data.error || new Error(`Request failed with status ${response.status}`);
+				} else {
+					loading = false;
 				}
-			} else if (option == 'general') {
-				console.log('general');
+				result = data.result;
+			} catch (error) {
+				// Consider implementing your own error handling logic here
+				console.error(error);
+			}}
+			else if (option == 'general'){
+				console.log('general')
 				try {
-					// use the apiCall function to make a request to the server
-					const response = await apiCall(promptInput, option);
-					console.log(response);
+					const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+					method: 'POST',
+     			headers: { 'Content-Type': 'application/json' },
+      			body: JSON.stringify({
+      "contents": [{
+        "parts":[{
+          "text": "hello"}]}]}),
+				});
+				console.log(response);
 
-					data = await response.json();
-					data = data.output;
-					console.log(data);
-				} catch (error) {
-					// Consider implementing your own error handling logic here
-					console.error(error);
+				let data = await response.json();
+				data = data.candidates[0].content.parts[0].text;
+				// data = marked.parse(data);
+				console.log(data);
+				if (response.status !== 200) {
+					throw data.error || new Error(`Request failed with status ${response.status}`);
+				} else {
+					loading = false;
 				}
-			} else {
-				console.log('DS lab');
-				try {
-					// use the apiCall function to make a request to the server
-					const response = await apiCall(promptInput, option);
-					console.log(response);
+				data = data.candidates[0].content.parts[0].text;
+				result = data.result;
+				return data;
+			} catch (error) {
+				// Consider implementing your own error handling logic here
+				console.error(error);
+			}
+			}
+			else {
+				console.log('DS lab')
+			try {
+				//const apiKey = 'AIzaSyDu4RlVwMdvXzhpkrUX1r8oQ4TxWCBKKtI';
+				const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+					method: 'POST',
+     			headers: { 'Content-Type': 'application/json' },
+      			body: JSON.stringify({
+      "contents": [{
+        "parts":[{
+          "text": sysPrompt1+ promptInput}]}]}),
+				});
+				console.log(response);
 
-					data = await response.json();
-					data = data.output;
-					console.log(data);
-				} catch (error) {
-					// Consider implementing your own error handling logic here
-					console.error(error);
+				data = await response.json();
+				data = data.candidates[0].content.parts[0].text;
+				// data = marked.parse(data);
+				console.log(data);
+				if (response.status !== 200) {
+					throw data.error || new Error(`Request failed with status ${response.status}`);
+				} else {
+					loading = false;
 				}
+				result = data.result;
+			} catch (error) {
+				// Consider implementing your own error handling logic here
+				console.error(error);
+			}
 			}
 		}
 	}
@@ -129,12 +171,21 @@
 							required
 						/>
 					</label>
-					<select
-						bind:value={option}
-						name="option"
-						id="option"
-						class="bg-inherit rounded-lg border shadow-md shadow-white"
-					>
+
+					<!-- Range slider -->
+					<label class="api">
+						<!-- <span>Label Text</span> -->
+
+						<input
+							class="input"
+							type="password"
+							name="api"
+							bind:value={apiKey}
+							placeholder="Gemini API key"
+							required
+						/>
+					</label>
+					<select bind:value={option} name="option" id="option" class="bg-inherit rounded-lg border shadow-md shadow-white">
 						<option class="text-black" value="" selected disabled>Select Option</option>
 						<option class="text-black" value="python-lab">Python Lab</option>
 						<option class="text-black" value="DS-lab">DS Lab</option>
