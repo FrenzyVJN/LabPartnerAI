@@ -62,7 +62,7 @@
 		loading = true;
 		console.log(option)
 		if (promptInput != '') {
-			if (option = 'python-lab'){
+			if (option == 'python-lab'){
 				console.log('python lab')
 			try {
 				const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
